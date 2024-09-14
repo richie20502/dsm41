@@ -67,4 +67,8 @@ class UsuarioController extends Controller
     public function FunctionTest(){
         
     }
+
+    public function DeveloperFunction(){
+    
+    }
 }
