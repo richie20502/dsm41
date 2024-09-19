@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Usuario;
 use App\Http\Requests\StoreUsuarioRequest;
 use App\Http\Requests\UpdateUsuarioRequest;
+use Illuminate\Support\Facades\Log;
 
 class UsuarioController extends Controller
 {
@@ -13,7 +14,17 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        //
+        $a = "LLegas a la funcion";
+        Log::emergency($a);
+        Log::alert(message: $a);
+        Log::critical($a);
+        Log::error($a);
+        Log::warning($a);
+        Log::notice($a);
+        Log::info($a);
+        Log::debug($a);
+        $user = Usuario::all();
+        return view('vistas.index', compact('user'));
     }
 
     /**
@@ -64,11 +75,7 @@ class UsuarioController extends Controller
         //
     }
 
-    public function FunctionTest(){
-        
-    }
+    public function FunctionTest() {}
 
-    public function DeveloperFunction(){
-    
-    }
+    public function DeveloperFunction() {}
 }
