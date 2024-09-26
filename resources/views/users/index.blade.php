@@ -4,13 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>prueba html</title>
+    <title>Document</title>
 </head>
 <body>
-    <ul>
-    @foreach($user  as $us)
-        <li>{{ $us->name }} - {{$us->email}} - {{ $us->id}} -- {{$us->created_at}} -- {{$us->updated_at}}</li>
-    @endforeach   
-</ul>
+    <h1> INDEX </h1>
 </body>
 </html>
