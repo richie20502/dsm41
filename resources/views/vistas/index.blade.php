@@ -9,8 +9,8 @@
 <body>
     <ul>
     @foreach($user  as $us)
-        <li>{{ $us->name }} - {{$us->email}} - {{ $us->id}} -- {{$us->created_at}}</li>
-    @endforeach   
+        <li>{{ $us->name }} - {{$us->email}} - {{ $us->id}} -- {{$us->created_at}} -- {{$us->updated_at}}</li>
+    @endforeach
 </ul>
 </body>
 </html>
