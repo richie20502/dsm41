@@ -79,3 +79,17 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 -   {{ $usuarios->links('pagination::bootstrap-4') }}
 -   @import 'bootstrap/dist/css/bootstrap.min.css';
 -   {{ $usuarios->links('pagination::bootstrap-4') }}
+
+## creamos los factory
+
+-   php artisan make:factory UserFactory --model=User
+    database/factory
+
+## Creacion de seeder
+
+-   php artisan make:seeder UserSeeder
+    database/seeders
+
+## corremos los seeder
+
+-   php artisan db:seed
