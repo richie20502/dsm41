@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    @import 'bootstrap/dist/css/bootstrap.min.css';
-</head>
-<body>
+<!-- resources/views/home.blade.php -->
+@extends('layouts.app')
+
+@section('title', 'Página de Inicio')
+
+@section('content')
     <table class="table">
         <thead>
             <tr>
@@ -30,5 +26,4 @@
     <div class="pagination justify-content-center">
         {{ $usuarios->links('pagination::bootstrap-4') }}
     </div>
-</body>
-</html>
+@endsection
