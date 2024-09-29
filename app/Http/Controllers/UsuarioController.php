@@ -6,6 +6,7 @@ use App\Models\Usuario;
 use App\Http\Requests\StoreUsuarioRequest;
 use App\Http\Requests\UpdateUsuarioRequest;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Http\Request;
 
 class UsuarioController extends Controller
 {
@@ -32,15 +33,28 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        //
+        return view('vistas.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreUsuarioRequest $request)
+    public function store(Request $request)
     {
-        //
+        //dd($request->all());
+        $validated= $request->validate(
+            ['nombre' => 'required|string|max:10']
+        );
+
+        Usuario::create([
+            'name' => $validated['nombre'],
+            'email' =>  'corre@gmail',
+            'password' => 'HOLA'
+        ]);
+
+
+
+        dd($validated);
     }
 
     /**
@@ -62,10 +76,7 @@ class UsuarioController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateUsuarioRequest $request, Usuario $usuario)
-    {
-        //
-    }
+
 
     /**
      * Remove the specified resource from storage.

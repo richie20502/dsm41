@@ -8,3 +8,6 @@ Route::get('/', function () {
 });
 
 Route::get('/prueba', [UsuarioController::class, 'index']);
+
+Route::get('/usuario/creado', [UsuarioController::class, 'create']);
+Route::post('/usuario/creado', [UsuarioController::class, 'store'])->name('user.store');
