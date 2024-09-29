@@ -73,3 +73,9 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ## Activar y desabilitar debugbar
 
 -   php artisan debugbar:clear
+
+## Mejoras paginacion
+
+-   {{ $usuarios->links('pagination::bootstrap-4') }}
+-   @import 'bootstrap/dist/css/bootstrap.min.css';
+-   {{ $usuarios->links('pagination::bootstrap-4') }}
