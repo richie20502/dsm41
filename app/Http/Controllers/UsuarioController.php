@@ -42,7 +42,7 @@ class UsuarioController extends Controller
     public function store(Request $request)
     {
         //dd($request->all());
-        $validated= $request->validate(
+        $validated = $request->validate(
             ['nombre' => 'required|string|max:10']
         );
 
@@ -89,4 +89,11 @@ class UsuarioController extends Controller
     public function FunctionTest() {}
 
     public function DeveloperFunction() {}
+
+    public function paginate()
+    {
+        $usuarios = Usuario::paginate(2);
+
+        return view('vistas.paginate', compact('usuarios'));
+    }
 }
