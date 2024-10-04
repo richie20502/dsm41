@@ -7,6 +7,9 @@ use App\Http\Requests\StoreUsuarioRequest;
 use App\Http\Requests\UpdateUsuarioRequest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
+
 
 class UsuarioController extends Controller
 {
@@ -48,13 +51,12 @@ class UsuarioController extends Controller
 
         Usuario::create([
             'name' => $validated['nombre'],
-            'email' =>  'corre@gmail',
-            'password' => 'HOLA'
+            'email' =>  Str::random(10).'@gmail',
+            'password' => Hash::make("Hola123")
         ]);
 
+        return view('vistas.list_users');
 
-
-        dd($validated);
     }
 
     /**
@@ -89,4 +91,13 @@ class UsuarioController extends Controller
     public function FunctionTest() {}
 
     public function DeveloperFunction() {}
+
+    public function list(){
+
+        $usuarios = Usuario::paginate(4);
+
+        #dd($usuarios);
+
+        return view('vistas.list_users', compact('usuarios'));
+    }
 }
