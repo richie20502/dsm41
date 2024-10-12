@@ -72,4 +72,5 @@ composer require realrashid/sweet-alert
 php artisan vendor:publish --provider="RealRashid\SweetAlert\SweetAlertServiceProvider"
 
 
-## 
+## autentificacion 
+php artisan make:controller AuthController

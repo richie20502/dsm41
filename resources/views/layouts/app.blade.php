@@ -9,6 +9,20 @@
     @yield('styles')
 </head>
 <body>
+    <nav>
+        <ul>
+            <li><a href="{{ route('login') }}">Iniciar Sesión</a></li>
+            <li><a href="{{ route('register') }}">Registrarse</a></li>
+            @if(auth()->check())
+                <li>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit">Cerrar Sesión</button>
+                    </form>
+                </li>
+            @endif
+        </ul>
+    </nav>
     <div class="container">
         @yield('content')
     </div>
