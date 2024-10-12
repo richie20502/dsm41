@@ -13,7 +13,7 @@ class Usuario extends Model
 
     protected $fillable = ['name', 'email','password'];
 
-    //protected $primaryKey = 'id';
+    protected $primaryKey = 'id';
 
     public $timestaps= false;
 
