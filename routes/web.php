@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,3 +17,12 @@ Route::get('/usuario/update/{id}', [UsuarioController::class, 'edit'])->name('us
 Route::post('/usuario/update', [UsuarioController::class, 'update'])->name('user.update.data');
 
 Route::get('/usuario/delete/{id}', [UsuarioController::class, 'destroy'])->name('user.destroy');
+
+
+Route::get('login',[AuthController::class, 'showLogin']);
+Route::post('login',[AuthController::class, 'login'])->name('login');
+
+
+Route::get('/home',function (){
+    return view('home');
+})->name('home');

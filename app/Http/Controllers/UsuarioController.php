@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
-use RealRashid\SweetAlert\Facades\Alert;
+use RealRashid\SweetAlert\Facades\Alert; #usado para el sweet alert
 
 
 class UsuarioController extends Controller
@@ -55,8 +55,8 @@ class UsuarioController extends Controller
             'email' =>  Str::random(10).'@gmail',
             'password' => Hash::make("Hola123")
         ]);
-
-        return view('vistas.list_users');
+        Alert::success('Exito Usuario creado', ' El usuario ha sido creado')->flash();
+        return  redirect()->route('user.list');
 
     }
 
