@@ -74,3 +74,13 @@ php artisan vendor:publish --provider="RealRashid\SweetAlert\SweetAlertServicePr
 
 ## autentificacion 
 php artisan make:controller AuthController
+
+## creamos middleware
+php artisan make:middleware isAuthenticated    
+
+
+## Luego, asegúrate de registrar el middleware en app/Http/Kernel.php:
+protected $routeMiddleware = [
+    // otros middlewares...
+    'is.authenticated' => \App\Http\Middleware\isAuthenticated::class,
+];
