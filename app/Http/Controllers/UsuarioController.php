@@ -71,22 +71,38 @@ class UsuarioController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Usuario $usuario)
+    public function edit($id)
     {
-        //
+        //dd($id);
+        $usuario = Usuario::find($id);
+        //dd($usuario);
+        return view('vistas.update',compact('usuario'));
     }
 
     /**
      * Update the specified resource in storage.
      */
 
+    public function update(Request $request){
+        //dd($request->all());
+        $usuario = Usuario::find($request->id);
+        $usuario->name = $request->nombre;
+        $usuario->save();
+        Alert::success('Éxito', 'Los datos han sido guardados correctamente.');
+        return redirect()->route('user.list');
+    }
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Usuario $usuario)
+    public function destroy($id)
     {
-        //
+        //dd($id);
+        $usuario= Usuario::find($id);
+        $usuario->delete();
+        Alert::success('Éxito', 'Los datos han sido guardados correctamente.');
+        return redirect()->route('user.list');
     }
 
     public function FunctionTest() {}

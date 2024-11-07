@@ -84,3 +84,6 @@ protected $routeMiddleware = [
     // otros middlewares...
     'is.authenticated' => \App\Http\Middleware\isAuthenticated::class,
 ];
+
+# php artisan vendor:publish --provider="RealRashid\SweetAlert\SweetAlertServiceProvider"
+
