@@ -4,13 +4,19 @@ use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
+use App\Http\Middleware\isAuthenticated;
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/prueba', [UsuarioController::class, 'index']);
 
-Route::get('/usuarios/list',[UsuarioController::class, 'list'])->name('user.list');
+Route::middleware([isAuthenticated::class])->group(function () {
+    Route::get('/usuarios/list',[UsuarioController::class, 'list'])->name('user.list');
+});
+
+
 Route::get('/usuario/creado', [UsuarioController::class, 'create']);
 Route::post('/usuario/creado', [UsuarioController::class, 'store'])->name('user.store');
 
