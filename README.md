@@ -65,4 +65,25 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
+## install sweet alert 
+
+composer require realrashid/sweet-alert
+
+php artisan vendor:publish --provider="RealRashid\SweetAlert\SweetAlertServiceProvider"
+
+
+## autentificacion 
+php artisan make:controller AuthController
+
+## creamos middleware
+php artisan make:middleware isAuthenticated    
+
+
+## Luego, asegúrate de registrar el middleware en app/Http/Kernel.php:
+protected $routeMiddleware = [
+    // otros middlewares...
+    'is.authenticated' => \App\Http\Middleware\isAuthenticated::class,
+];
+
 # php artisan vendor:publish --provider="RealRashid\SweetAlert\SweetAlertServiceProvider"
+

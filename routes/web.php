@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+
+use App\Http\Middleware\isAuthenticated;
 
 Route::get('/', function () {
     return view('welcome');
@@ -9,10 +12,23 @@ Route::get('/', function () {
 
 Route::get('/prueba', [UsuarioController::class, 'index']);
 
-Route::get('/usuarios/list',[UsuarioController::class, 'list'])->name('user.list');
+Route::middleware([isAuthenticated::class])->group(function () {
+    Route::get('/usuarios/list',[UsuarioController::class, 'list'])->name('user.list');
+});
+
+
 Route::get('/usuario/creado', [UsuarioController::class, 'create']);
 Route::post('/usuario/creado', [UsuarioController::class, 'store'])->name('user.store');
-Route::get('/usuario/update/{id}', [UsuarioController::class, 'edit'])->name('user.update');
-Route::post('/usuario/update', [UsuarioController::class, 'update'])->name('user.update.data');
 
-Route::get('/usuario/delete/{id}', [UsuarioController::class, 'destroy'])->name('user.destroy');
+
+Route::get('register', [AuthController::class, 'showRegisterForm'])->name('register');
+Route::post('register', [AuthController::class, 'register']);
+
+Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('login', [AuthController::class, 'login']);
+
+Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('/home', function () {
+    return view('home'); // Asegúrate de tener una vista llamada 'home'
+})->name('home');

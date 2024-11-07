@@ -55,8 +55,8 @@ class UsuarioController extends Controller
             'email' =>  Str::random(10).'@gmail',
             'password' => Hash::make("Hola123")
         ]);
-
-        return view('vistas.list_users');
+        Alert::success('¡Usuario Creado!', 'El usuario ha sido creado exitosamente.')->flash();
+        return redirect()->route('user.list');
 
     }
 
